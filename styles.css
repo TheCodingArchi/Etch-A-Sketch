@@ -32,7 +32,7 @@
   }
 
   .grid-container {
-    width: 80%;
+    width: 50%;
     margin: 25px auto;
     height: calc(100vh - 150px);
     background-color: #ffffff;
@@ -40,7 +40,7 @@
   }
 
   .grid-container ~ section {
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
     display: flex;
     justify-content: left;
@@ -65,4 +65,18 @@
 
   button:hover {
     background-color: #ae2012;
+  }
+
+  /* ============================= 
+  JAVASCRIPT TRIGERRED STYLES
+  ============================= */
+  .grid-row {
+    width: 100%;
+    display: flex;
+  }
+
+  .grid-column {
+    height: 100%;
+    flex: 1;
+    border: 1px solid grey;
   }
