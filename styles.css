@@ -31,10 +31,38 @@
     color: #ae2012;
   }
 
-  .container {
+  .grid-container {
     width: 80%;
     margin: 25px auto;
     height: calc(100vh - 150px);
     background-color: #ffffff;
     box-shadow: 1px 1px 3px 3px rgba(0,0,0,0.2);
+  }
+
+  .grid-container ~ section {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: left;
+  }
+
+  button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: max-content;
+    padding: 5px;
+    margin-right: 10px;
+    background-color: #E83221;
+    border: 1px solid #FBF8EF;
+    color: #FBF8EF;
+    cursor: pointer;
+  }
+
+  button i {
+    margin-right: 5px;
+  }
+
+  button:hover {
+    background-color: #ae2012;
   }
