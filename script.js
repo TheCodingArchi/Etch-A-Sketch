@@ -34,3 +34,11 @@ function displayInputBox() {
     removeGrid();
     inputBox.style.display = 'initial';
 }
+
+function setNewGridSize(event) {
+    gridSize = document.querySelector('#grid-size-input').value;
+    const inputBox = document.querySelector('main ~ section');
+    createGrid();
+    inputBox.style.display = "none";
+    event.preventDefault();
+}
