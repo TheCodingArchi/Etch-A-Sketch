@@ -67,6 +67,38 @@
     background-color: #ae2012;
   }
 
+  .change-grid-size-popup {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 10px 10px;
+    width: max-content;
+    background-color: #e9d8a6;
+    box-shadow: 0px 10px 12px -5px rgba(0,0,0,0.3);
+  }
+
+  input {
+    padding: 5px 10px;
+  }
+
+  input[type="text"] {
+    outline: 1px solid blue;
+  }
+
+  input[type="submit"] {
+    background-color: #E83221;
+    border: 1px solid #FBF8EF;
+    color: #FBF8EF;
+    font-weight: bold;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #ae2012;
+  }
+
   /* ============================= 
   JAVASCRIPT TRIGERRED STYLES
   ============================= */
