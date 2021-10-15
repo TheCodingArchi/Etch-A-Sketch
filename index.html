@@ -19,18 +19,24 @@
     <main>
         <section class="grid-container"></section>
         <section>
-            <button>
+            <button class="eraser">
                 <i class="fas fa-eraser"></i>
                 <p>Erase Grid</p>
             </button>
-            <button>
+            <button class="clear-sketch">
                 <i class="fas fa-trash-alt"></i>
                 <p>Clear Grid</p>
             </button>
-            <button>
+            <button class="change-grid-size">
                 <p>Change Grid Size</p>
             </button>
         </section>
     </main>
+    <section class="change-grid-size-popup">
+        <form>
+            <input type="text" autofocus id="grid-size-input" placeholder="Enter Grid Size">
+            <input type="submit" value="Set Grid Size">
+        </form>
+    </section>
 </body>
 </html>
