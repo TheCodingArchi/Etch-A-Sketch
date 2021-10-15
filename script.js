@@ -1,6 +1,11 @@
 let gridSize = 16;
 const gridContainer = document.querySelector('.grid-container');
+const changeGridSizeBtn = document.querySelector('button.change-grid-size');
+const form = document.querySelector('form');
+
 document.addEventListener('DOMContentLoaded', createGrid);
+changeGridSizeBtn.addEventListener('click', displayInputBox);
+form.addEventListener('submit', setNewGridSize);
 
 function createGrid() {
     for (let i = 1; i <= gridSize; i++) {
@@ -15,4 +20,17 @@ function createGrid() {
             gridRow.appendChild(gridColumn);
         }
     }
+}
+
+function removeGrid() {
+    const rows = document.querySelectorAll('.grid-row');
+    rows.forEach((row) => {
+        row.parentNode.removeChild(row);
+    });
+}
+
+function displayInputBox() {
+    const inputBox = document.querySelector('main ~ section');
+    removeGrid();
+    inputBox.style.display = 'initial';
 }
