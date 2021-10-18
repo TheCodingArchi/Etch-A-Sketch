@@ -32,6 +32,8 @@
   }
 
   .grid-container {
+    display: flex;
+    flex-wrap: wrap;
     width: 50%;
     margin: 25px auto;
     height: calc(100vh - 150px);
@@ -102,13 +104,4 @@
   /* ============================= 
   JAVASCRIPT TRIGERRED STYLES
   ============================= */
-  .grid-row {
-    width: 100%;
-    display: flex;
-  }
-
-  .grid-column {
-    height: 100%;
-    flex: 1;
-    border: 1px solid grey;
-  }
+  
