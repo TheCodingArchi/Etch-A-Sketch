@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', createGrid);
 changeGridSizeBtn.addEventListener('click', displayInputBox);
 form.addEventListener('submit', setNewGridSize);
 
+
 function createGrid() {
     for (let i = 1; i <= gridSize ** 2; i++) {
         const grid = document.createElement('div');
@@ -15,6 +16,7 @@ function createGrid() {
         grid.style.border = '1px solid grey';
         gridContainer.appendChild(grid);
     }
+    draw();
 }
 
 function removeGrid() {
@@ -34,6 +36,17 @@ function setNewGridSize(event) {
     gridSize = document.querySelector('#grid-size-input').value;
     const inputBox = document.querySelector('main ~ section');
     createGrid();
-    inputBox.style.display = "none";
+    inputBox.style.display = 'none';
     event.preventDefault();
 }
+
+function draw() {
+    const rows = document.querySelectorAll('.grid-container > div');
+    rows.forEach(row => {
+        row.addEventListener('mouseover', () => {
+            row.style.backgroundColor = '#000000';
+        });
+    })
+}
+
+
