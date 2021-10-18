@@ -8,22 +8,17 @@ changeGridSizeBtn.addEventListener('click', displayInputBox);
 form.addEventListener('submit', setNewGridSize);
 
 function createGrid() {
-    for (let i = 1; i <= gridSize; i++) {
-        const gridRow = document.createElement('div');
-        gridRow.classList.add('grid-row');
-        gridRow.style.height = `calc(100% / ${gridSize})`;
-        gridContainer.appendChild(gridRow);
-
-        for (let j = 1; j <= gridSize; j++) {
-            const gridColumn = document.createElement('div');
-            gridColumn.classList.add('grid-column');
-            gridRow.appendChild(gridColumn);
-        }
+    for (let i = 1; i <= gridSize ** 2; i++) {
+        const grid = document.createElement('div');
+        grid.style.height = `calc(100% / ${gridSize})`;
+        grid.style.width = `calc(100% / ${gridSize})`;
+        grid.style.border = '1px solid grey';
+        gridContainer.appendChild(grid);
     }
 }
 
 function removeGrid() {
-    const rows = document.querySelectorAll('.grid-row');
+    const rows = document.querySelectorAll('.grid-container > div');
     rows.forEach((row) => {
         row.parentNode.removeChild(row);
     });
