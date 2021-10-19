@@ -46,11 +46,26 @@ function setNewGridSize(event) {
 
 function draw() {
     const rows = document.querySelectorAll('.grid-container > div');
+    let isDrawing = false;
+
     rows.forEach(row => {
-        row.addEventListener('mouseenter', () => {
-            row.style.backgroundColor = getRandomColors();
+        row.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            e.target.style.backgroundColor = getRandomColors();
         });
     });
+
+    rows.forEach(row => {
+        row.addEventListener('mouseover', (e) => {
+            if (isDrawing === true) {
+                e.target.style.backgroundColor = getRandomColors();
+            }
+        });
+    });
+
+    window.addEventListener('mouseup', () => {
+        isDrawing = false;
+    })
 }
 
 function clearDrawing() {
@@ -60,7 +75,7 @@ function clearDrawing() {
     });
 }
 
-function erase() {
+function erase() {    
     const rows = document.querySelectorAll('.grid-container > div');
     rows.forEach(row => {
         row.addEventListener('mouseenter', () => {
