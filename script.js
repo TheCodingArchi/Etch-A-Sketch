@@ -1,18 +1,20 @@
-let gridSize = 16;
 const gridContainer = document.querySelector('.grid-container');
-const changeGridSizeBtn = document.querySelector('button.change-grid-size');
-const form = document.querySelector('form');
 const eraser = document.querySelector('button.eraser');
 const clearSketchBtn = document.querySelector('button.clear-sketch');
-
+// const drawBtn = document.querySelector('button.draw');
+const slider = document.querySelector('span > input');
+const gridSizeDisplay = document.querySelector('span > p');
 
 document.addEventListener('DOMContentLoaded', createGrid);
-changeGridSizeBtn.addEventListener('click', displayInputBox);
-form.addEventListener('submit', setNewGridSize);
+slider.addEventListener('input', setNewGridSize);
 eraser.addEventListener('click', erase);
 clearSketchBtn.addEventListener('click', clearDrawing);
+// drawBtn.addEventListener('click', draw);
 
 function createGrid() {
+    const gridSize = slider.value;
+    gridSizeDisplay.textContent = `${gridSize} x ${gridSize} Grid`;
+
     for (let i = 1; i <= gridSize ** 2; i++) {
         const grid = document.createElement('div');
         grid.style.height = `calc(100% / ${gridSize})`;
@@ -30,18 +32,15 @@ function removeGrid() {
     });
 }
 
-function displayInputBox() {
-    const inputBox = document.querySelector('main ~ section');
-    removeGrid();
-    inputBox.style.display = 'initial';
-}
+// function displayInputBox() {
+//     const inputBox = document.querySelector('main ~ section');
+//     removeGrid();
+//     inputBox.style.display = 'initial';
+// }
 
-function setNewGridSize(event) {
-    gridSize = document.querySelector('#grid-size-input').value;
-    const inputBox = document.querySelector('main ~ section');
+function setNewGridSize() {
+    removeGrid();
     createGrid();
-    inputBox.style.display = 'none';
-    event.preventDefault();
 }
 
 function draw() {
@@ -79,6 +78,10 @@ function erase() {
     const rows = document.querySelectorAll('.grid-container > div');
     rows.forEach(row => {
         row.addEventListener('mouseenter', () => {
+            row.style.backgroundColor = 'initial';
+        });
+
+        row.addEventListener('mousedown', () => {
             row.style.backgroundColor = 'initial';
         });
     });
