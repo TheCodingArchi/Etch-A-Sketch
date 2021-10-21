@@ -114,4 +114,30 @@
   .eraser-active, .random-color-active {
     background-color: green;
   }
+
+   /* ============================= 
+  MOBILE RESPONSIVE STYLES
+  ============================= */
+  @media screen and (max-width: 800px) {
+    .grid-container ~ section {
+      flex-wrap: wrap;
+      justify-content: left;
+    }
+    
+    .eraser p, .clear-sketch p {
+      display: none;
+    }
+
+    button, span p {
+      margin-right: 5px;
+    }
+
+    button i {
+      margin-right: 0;
+    }
+
+    .change-color-popup {
+      flex-wrap: wrap;
+    }
+  }
   
