@@ -21,22 +21,27 @@
         <section>
             <button class="eraser">
                 <i class="fas fa-eraser"></i>
-                <p>Erase Grid</p>
+                <p>Erase</p>
             </button>
             <button class="clear-sketch">
                 <i class="fas fa-trash-alt"></i>
-                <p>Clear Grid</p>
+                <p>Delete</p>
             </button>
-            <button class="change-grid-size">
-                <p>Change Grid Size</p>
+            <span>
+                <input type="range" min="1" max="64" value="16">
+                <p></p>
+            </span>
+            <button class="draw">
+                <i class="fas fa-pen"></i>
+                <p>Draw</p>
             </button>
         </section>
     </main>
-    <section class="change-grid-size-popup">
+    <!-- <section class="change-grid-size-popup">
         <form>
             <input type="text" autofocus id="grid-size-input" placeholder="Enter Grid Size">
             <input type="submit" value="Set Grid Size">
         </form>
-    </section>
+    </section> -->
 </body>
 </html>
