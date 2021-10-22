@@ -3,7 +3,7 @@ const clearSketchBtn = document.querySelector('button.clear-sketch');
 const gridSizePicker = document.querySelector('span > input');
 const randomColorbtn = document.querySelector('.random-color');
 const penColorBtn = document.querySelector('.pen-color');
-const colorPalette = document.querySelector('.change-color-popup');
+const colorPalette = document.querySelector('.color-palette');
 
 let penColor = '#000000'; // default color
 penColorBtn.style.backgroundColor = penColor;
@@ -22,19 +22,18 @@ function createGrid() {
     gridSizeDisplay.textContent = `${gridSize} x ${gridSize} Grid`;
 
     for (let i = 1; i <= gridSize ** 2; i++) {
-        const grid = document.createElement('div');
-        grid.style.height = `calc(100% / ${gridSize})`;
-        grid.style.width = `calc(100% / ${gridSize})`;
-        // grid.style.border = '0.1px solid #e4e4e4';
-        gridContainer.appendChild(grid);
+        const gridCell = document.createElement('div');
+        gridCell.style.height = `calc(100% / ${gridSize})`;
+        gridCell.style.width = `calc(100% / ${gridSize})`;
+        gridContainer.appendChild(gridCell);
     }
-    draw();
+    drawOrErase();
 }
 
 function removeGrid() {
-    const rows = document.querySelectorAll('.grid-container > div');
-    rows.forEach((row) => {
-        row.parentNode.removeChild(row);
+    const gridCells = document.querySelectorAll('.grid-container > div');
+    gridCells.forEach(gridCell => {
+        gridCell.parentNode.removeChild(gridCell);
     });
 }
 
@@ -44,9 +43,9 @@ function setNewGridSize() {
 }
 
 function clearDrawing() {
-    const rows = document.querySelectorAll('.grid-container > div');
-    rows.forEach(row => {
-        row.style.backgroundColor = 'initial';
+    const pixels = document.querySelectorAll('.grid-container > div');
+    pixels.forEach(pixel => {
+        pixel.style.backgroundColor = 'initial';
     });
 }
 
@@ -81,37 +80,33 @@ function getRandomColors() {
     return colorArray[randomNumber];
 }
 
-function draw() {
-    const rows = document.querySelectorAll('.grid-container > div');
+function changePixelColor(e) {
+    if (eraser.classList.contains('eraser-active')) {
+        e.target.style.backgroundColor = 'initial';
+    }
+    else if (randomColorbtn.classList.contains('random-color-active')) {
+        e.target.style.backgroundColor = getRandomColors();
+    }
+    else {
+        e.target.style.backgroundColor = penColor;
+    }
+}
+
+function drawOrErase() {
+    const pixels = document.querySelectorAll('.grid-container > div');
     let isDrawing = false;
 
-    rows.forEach(row => {
-        row.addEventListener('mousedown', (e) => {
+    pixels.forEach(pixel => {
+        pixel.addEventListener('mousedown', (e) => {
             isDrawing = true;
-            if (eraser.classList.contains('eraser-active')) {
-                e.target.style.backgroundColor = 'initial';
-            }
-            else if (randomColorbtn.classList.contains('random-color-active')) {
-                e.target.style.backgroundColor = getRandomColors();
-            }
-            else {
-                e.target.style.backgroundColor = penColor;
-            }
+            changePixelColor(e);
         });
     });
 
-    rows.forEach(row => {
-        row.addEventListener('mouseover', (e) => {
+    pixels.forEach(pixel => {
+        pixel.addEventListener('mouseover', (e) => {
             if (isDrawing === true) {
-                if (eraser.classList.contains('eraser-active')) {
-                    e.target.style.backgroundColor = 'initial';
-                }
-                else if (randomColorbtn.classList.contains('random-color-active')) {
-                    e.target.style.backgroundColor = getRandomColors();
-                }
-                else {
-                    e.target.style.backgroundColor = penColor;
-                }
+                changePixelColor(e);
             }
         });
     });
