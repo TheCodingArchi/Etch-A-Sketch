@@ -50,11 +50,17 @@ function clearDrawing() {
 }
 
 function toggleEraser() {    
-    eraser.classList.toggle('eraser-active')
+    eraser.classList.toggle('eraser-active');
+    if (randomColorbtn.classList.contains('random-color-active')) {
+        randomColorbtn.classList.toggle('random-color-active');
+    }
 }
 
 function toggleRandomColors() {
     randomColorbtn.classList.toggle('random-color-active');
+    if (eraser.classList.contains('eraser-active')) {
+        eraser.classList.toggle('eraser-active');
+    }
 }
 
 function displayColorPalette() {
@@ -70,8 +76,16 @@ function getPenColor() {
             colorPalette.style.display = 'none';
             penColor = color.id;
             penColorBtn.style.backgroundColor = penColor;
-        })
-    })
+
+            if (eraser.classList.contains('eraser-active')) {
+                eraser.classList.toggle('eraser-active');
+            }
+
+            if (randomColorbtn.classList.contains('random-color-active')) {
+                randomColorbtn.classList.toggle('random-color-active');
+            }
+        });
+    });
 }
 
 function getRandomColors() {
